@@ -1,0 +1,20 @@
+/* src/components/Layout/Layout.css */
+
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Ocupa 100% da altura visível do navegador */
+    background-color: #f3f4f6;
+    /* Fundo cinza super claro e moderno */
+}
+
+/* A área de conteúdo principal */
+.main-content {
+    flex: 1;
+    /* Instrui esta área a esticar e ocupar todo o espaço restante abaixo da Navbar */
+    overflow-y: auto;
+    /* Se o conteúdo (como uma tabela longa) passar do ecrã, cria uma barra de rolagem apenas aqui */
+    padding: 2rem;
+    /* Espaçamento interno para que o conteúdo não fique colado aos cantos */
+}
