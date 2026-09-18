@@ -1,16 +1,12 @@
 // src/routes/routes.jsx
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-// 1. Importação dos nossos componentes estruturais e páginas
 import Layout from '../components/Layout/Layout';
-import Formulario from '../pages/Formulario/Formulario';
 import Acompanhamento from '../pages/Acompanhamento/Acompanhamento';
 import Aprovacoes from '../pages/Aprovacoes/Aprovacoes';
 
-// 2. Criação do mapa de navegação (roteador)
 export const rotas = createBrowserRouter([
     {
-        // ROTA ISOLADA: Login (Não tem o Layout da Navbar)
         path: '/login',
         element: (
             <div style={{ textAlign: 'center', marginTop: '50px' }}>
@@ -20,20 +16,13 @@ export const rotas = createBrowserRouter([
         )
     },
     {
-        // ROTA MÃE: Todas as páginas que precisam da Navbar ficam aqui dentro
         path: '/',
         element: <Layout />,
-
-        // ROTAS FILHAS: São injetadas no <Outlet /> do Layout
         children: [
             {
-                // Quando o utilizador acede à raiz ('/'), é redirecionado para o formulário
+                // Redireciona a tela inicial diretamente para as aprovações
                 index: true,
-                element: <Navigate to="/formulario" replace />
-            },
-            {
-                path: 'formulario',
-                element: <Formulario />
+                element: <Navigate to="/aprovacoes" replace />
             },
             {
                 path: 'acompanhamento',
