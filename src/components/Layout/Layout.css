@@ -2,19 +2,17 @@
 
 .app-layout {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    /* Coloca a Sidebar e o Conteúdo lado a lado */
     height: 100vh;
-    /* Ocupa 100% da altura visível do navegador */
     background-color: #f3f4f6;
-    /* Fundo cinza super claro e moderno */
+    overflow: hidden;
 }
 
-/* A área de conteúdo principal */
 .main-content {
     flex: 1;
-    /* Instrui esta área a esticar e ocupar todo o espaço restante abaixo da Navbar */
+    /* Ocupa todo o espaço que sobra à direita da Sidebar */
     overflow-y: auto;
-    /* Se o conteúdo (como uma tabela longa) passar do ecrã, cria uma barra de rolagem apenas aqui */
     padding: 2rem;
-    /* Espaçamento interno para que o conteúdo não fique colado aos cantos */
+    box-sizing: border-box;
 }
