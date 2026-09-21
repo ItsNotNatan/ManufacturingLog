@@ -1,59 +1,59 @@
 // src/pages/Fases/Fase2.jsx
 import React, { useState } from 'react';
+import { MailOpen } from 'lucide-react';
+import './Fase2.css';
 
 export default function Fase2() {
     const [mostrarPrazos, setMostrarPrazos] = useState(true);
 
     const handleConfirmarPrazos = () => {
-        alert('Datas enviadas. O PCP irá Atualizar o Plano de Produção.');
+        alert('Datas enviadas para o PCP.');
         setMostrarPrazos(false);
     };
 
     return (
-        <div className="tab-content fade-in max-w-6xl mx-auto">
-            <div className="mb-6 flex items-center justify-between">
-                <div>
-                    <h1 className="text-2xl font-bold text-slate-900">Fase 2: Planejamento</h1>
-                    <p className="text-sm text-slate-500 mt-1">Interação entre SCL/TL Eng e PCP para definição de prazos e entrega de recursos.</p>
-                </div>
-            </div>
+        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '1.5rem' }}>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Fase 2: Planejamento</h1>
 
-            <div className="space-y-6">
-                {mostrarPrazos && (
-                    <div className="action-block bg-white shadow-sm rounded-2xl border border-slate-200 overflow-hidden">
-                        <div className="border-l-4 border-amber-500 p-6 md:p-8">
-                            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                                <div>
-                                    <h3 className="text-xl font-bold text-slate-900">Montagem Subconjunto Y</h3>
-                                </div>
-                            </div>
+            {mostrarPrazos && (
+                <div className="fase2-action-card" style={{ backgroundColor: 'white', borderRadius: '1rem', padding: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>Montagem Subconjunto Y</h3>
 
-                            <div className="border border-slate-200 rounded-xl overflow-hidden mb-6">
-                                <table className="min-w-full divide-y divide-slate-200">
-                                    <thead className="bg-slate-50">
-                                        <tr>
-                                            <th className="px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase">Recurso</th>
-                                            <th className="px-4 py-3 text-left text-xs font-bold text-blue-700 uppercase bg-blue-50">Definir Prazo</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="bg-white divide-y divide-slate-200">
-                                        <tr>
-                                            <td className="px-4 py-3 text-sm font-medium text-slate-900">Kit Peças Cód 8899</td>
-                                            <td className="px-4 py-3 text-sm bg-blue-50/30">
-                                                <input type="date" defaultValue="2026-10-15" className="w-full text-sm border-slate-300 rounded-md border p-1.5" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div className="flex justify-end">
-                                <button onClick={handleConfirmarPrazos} className="px-6 py-2.5 text-sm font-bold rounded-lg text-white bg-blue-600 hover:bg-blue-700">
-                                    Confirmar Prazos
-                                </button>
-                            </div>
-                        </div>
+                    <div className="fase2-context-box">
+                        <p style={{ fontSize: '0.875rem' }}><strong>Contexto:</strong> O PCP listou os recursos necessários. Defina as datas de entrega.</p>
                     </div>
-                )}
+
+                    <div className="fase2-table-wrapper">
+                        <table className="fase2-table">
+                            <thead>
+                                <tr>
+                                    <th>Recurso Requerido</th>
+                                    <th>Qtd</th>
+                                    <th>Necessidade PCP</th>
+                                    <th className="highlight">Definir seu Prazo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Kit Peças Cód 8899</td>
+                                    <td>1 un</td>
+                                    <td>15/Out/2026</td>
+                                    <td className="highlight-cell"><input type="date" defaultValue="2026-10-15" style={{ padding: '0.25rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1' }} /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button onClick={handleConfirmarPrazos} style={{ backgroundColor: '#2563eb', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: 'none', cursor: 'pointer', float: 'right' }}>Confirmar Prazos</button>
+                    <div style={{ clear: 'both' }}></div>
+                </div>
+            )}
+
+            <div className="fase2-info-box" style={{ marginTop: '1.5rem' }}>
+                <div className="fase2-info-icon"><MailOpen size={24} /></div>
+                <div>
+                    <h4 style={{ fontWeight: 'bold' }}>Processo Automatizado: Reconfirmar Prazos</h4>
+                    <p style={{ fontSize: '0.875rem', color: '#64748b' }}>O sistema envia e-mails automáticos Segundas e Quintas às 8h para reconfirmar prazos.</p>
+                </div>
             </div>
         </div>
     );

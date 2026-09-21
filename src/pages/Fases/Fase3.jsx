@@ -1,32 +1,53 @@
 // src/pages/Fases/Fase3.jsx
 import React from 'react';
+import { Check, Settings, Ruler, Search } from 'lucide-react';
+import './Fase3.css';
 
 export default function Fase3() {
     return (
-        <div className="tab-content fade-in max-w-6xl mx-auto">
-            <div className="mb-6">
-                <h1 className="text-2xl font-bold text-slate-900">Fase 3: Manufatura</h1>
-                <p className="text-sm text-slate-500 mt-1">Acompanhamento apenas de leitura. A execução é realizada pelos times de Manufatura.</p>
-            </div>
+        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '1.5rem' }}>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Fase 3: Manufatura</h1>
 
-            <div className="space-y-6">
-                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                        <div>
-                            <h3 className="text-lg font-bold text-slate-900">REQ-2023-040 - Módulo Hidráulico Beta</h3>
-                            <p className="text-sm text-slate-500">Iniciado em 01/Out/2026</p>
-                        </div>
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
-                            Em Execução (Fábrica)
-                        </span>
+            <div style={{ backgroundColor: 'white', borderRadius: '1rem', padding: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', marginBottom: '1.5rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Módulo Hidráulico Beta</h3>
+
+                <div className="fase3-progress-container">
+                    <div className="fase3-progress-bar-bg">
+                        <div className="fase3-progress-bar-fill"></div>
                     </div>
 
-                    <div className="mt-4 bg-slate-50 p-6 rounded-xl border border-slate-100">
-                        <div className="relative pt-1 mb-8">
-                            <div className="overflow-hidden h-2.5 flex rounded-full bg-slate-200 shadow-inner">
-                                <div style={{ width: '45%' }} className="flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 rounded-full"></div>
-                            </div>
+                    <div className="fase3-timeline">
+                        <div className="fase3-step">
+                            <div className="fase3-step-icon icon-done"><Check size={16} /></div>
+                            <div className="fase3-step-title">Construção</div>
+                            <div className="fase3-step-desc">Separar & Construir</div>
                         </div>
+                        <div className="fase3-step">
+                            <div className="fase3-step-connector connector-emerald"></div>
+                            <div className="fase3-step-icon icon-current"><Settings size={16} /></div>
+                            <div className="fase3-step-title title-blue">Montagem</div>
+                            <div className="fase3-step-desc desc-blue">Pré-montar & Montar</div>
+                        </div>
+                        <div className="fase3-step">
+                            <div className="fase3-step-connector connector-slate"></div>
+                            <div className="fase3-step-icon icon-pending"><Ruler size={16} /></div>
+                            <div className="fase3-step-title">Ajustes & Checklists</div>
+                        </div>
+                        <div className="fase3-step">
+                            <div className="fase3-step-connector connector-slate"></div>
+                            <div className="fase3-step-icon icon-pending"><Search size={16} /></div>
+                            <div className="fase3-step-title">Qualidade & Fim</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="fase3-rework-card" style={{ backgroundColor: 'white', borderRadius: '1rem', padding: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', border: '1px solid #fecdd3' }}>
+                <div className="fase3-rework-bg"></div>
+                <div className="fase3-rework-content">
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Suporte Sensor V2 - Retrabalho</h3>
+                    <div className="fase3-rework-alert">
+                        <strong>Status do Fluxograma:</strong> A etapa "Avaliar qualidade" gerou uma Reprovação. O item retornou para "Retrabalhar".
                     </div>
                 </div>
             </div>

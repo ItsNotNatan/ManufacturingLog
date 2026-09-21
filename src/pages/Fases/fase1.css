@@ -1,0 +1,143 @@
+/* src/pages/Fases/Fase1.css */
+.fase1-action-card {
+    border-left: 4px solid #f59e0b;
+}
+
+/* amber-500 */
+.fase1-flow-indicator {
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fase1-flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.fase1-flow-step.muted {
+    opacity: 0.5;
+}
+
+.fase1-circle-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+    color: #fff;
+}
+
+.fase1-circle-slate {
+    background-color: #cbd5e1;
+}
+
+.fase1-circle-amber {
+    background-color: #f59e0b;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fef3c7;
+}
+
+.fase1-diamond-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #f59e0b;
+    transform: rotate(45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fef3c7;
+    margin-top: 0.5rem;
+}
+
+.fase1-diamond-icon i {
+    transform: rotate(-45deg);
+    color: #fff;
+    font-style: normal;
+}
+
+.fase1-line {
+    flex: 1;
+    height: 2px;
+    background-color: #cbd5e1;
+    margin: 0 0.5rem;
+}
+
+.fase1-line-dashed {
+    background-color: transparent;
+    border-top: 2px dashed #cbd5e1;
+}
+
+.fase1-step-text {
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.fase1-step-text.active {
+    font-weight: 700;
+    color: #b45309;
+    position: absolute;
+    top: 2.5rem;
+    width: 8rem;
+}
+
+.fase1-upload-box {
+    border: 2px dashed #cbd5e1;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #f8fafc;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.fase1-upload-box:hover {
+    background-color: #f1f5f9;
+}
+
+.fase1-budget-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    background-color: rgba(239, 246, 255, 0.5);
+    border: 1px solid #dbeafe;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+    .fase1-budget-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.fase1-budget-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.fase1-budget-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.fase1-budget-total {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #1d4ed8;
+}

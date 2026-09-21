@@ -1,0 +1,156 @@
+/* src/pages/Fases/Fase3.css */
+.fase3-progress-container {
+    background-color: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid #f1f5f9;
+    margin-top: 1rem;
+}
+
+.fase3-progress-bar-bg {
+    background-color: #e2e8f0;
+    height: 0.625rem;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+.fase3-progress-bar-fill {
+    background-color: #3b82f6;
+    height: 100%;
+    width: 45%;
+    border-radius: 9999px;
+}
+
+.fase3-timeline {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .fase3-timeline {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.fase3-step {
+    position: relative;
+}
+
+.fase3-step-connector {
+    display: none;
+    position: absolute;
+    top: 1.25rem;
+    left: -50%;
+    width: 100%;
+    height: 2px;
+    z-index: 0;
+}
+
+@media (min-width: 768px) {
+    .fase3-step-connector {
+        display: block;
+    }
+}
+
+.connector-emerald {
+    background-color: #a7f3d0;
+}
+
+.connector-slate {
+    background-color: #e2e8f0;
+}
+
+.fase3-step-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem auto;
+    position: relative;
+    z-index: 10;
+}
+
+.icon-done {
+    background-color: #d1fae5;
+    color: #059669;
+    border: 1px solid #a7f3d0;
+}
+
+.icon-current {
+    background-color: #2563eb;
+    color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 4px solid #dbeafe;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.icon-pending {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    border: 1px solid #e2e8f0;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+}
+
+.fase3-step-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #334155;
+}
+
+.fase3-step-desc {
+    font-size: 0.625rem;
+    color: #64748b;
+}
+
+.fase3-rework-card {
+    border-color: #fecdd3;
+    position: relative;
+    overflow: hidden;
+}
+
+.fase3-rework-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8rem;
+    height: 8rem;
+    background-color: #fff1f2;
+    border-bottom-left-radius: 100%;
+    z-index: 0;
+}
+
+.fase3-rework-content {
+    position: relative;
+    z-index: 10;
+}
+
+.fase3-rework-alert {
+    background-color: #fff1f2;
+    border: 1px solid #ffe4e6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+    color: #be123c;
+}
+
+.fase3-rework-alert strong {
+    color: #881337;
+}

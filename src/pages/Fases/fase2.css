@@ -1,0 +1,85 @@
+/* src/pages/Fases/Fase2.css */
+.fase2-action-card {
+    border-left: 4px solid #f59e0b;
+}
+
+.fase2-delivery-card {
+    border-left: 4px solid #10b981;
+}
+
+.fase2-context-box {
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.fase2-table-wrapper {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.fase2-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.fase2-table th {
+    background-color: #f8fafc;
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.fase2-table td {
+    background-color: #fff;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.fase2-table th.highlight {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+}
+
+.fase2-table td.highlight-cell {
+    background-color: rgba(239, 246, 255, 0.3);
+}
+
+.fase2-info-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 640px) {
+    .fase2-info-box {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.fase2-info-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #f1f5f9;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}

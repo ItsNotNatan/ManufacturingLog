@@ -1,100 +1,95 @@
 // src/pages/Fases/Fase1.jsx
 import React, { useState } from 'react';
+import { UploadCloud, Check, FileText, HelpCircle } from 'lucide-react';
+import './Fase1.css'; // Importação mágica do teu estilo!
 
 export default function Fase1() {
-    // Controlam a visibilidade dos blocos de ação
     const [mostrarTL, setMostrarTL] = useState(true);
     const [mostrarSCL, setMostrarSCL] = useState(true);
 
     const handleTLSubmit = (e) => {
         e.preventDefault();
-        alert('Informações de engenharia enviadas. O time de Manufatura irá realizar o orçamento.');
-        setMostrarTL(false); // Esconde o bloco após envio
+        alert('Informações de engenharia enviadas!');
+        setMostrarTL(false);
     };
 
     return (
-        <div className="tab-content fade-in max-w-6xl mx-auto">
-            <div className="mb-6 flex items-center justify-between">
-                <div>
-                    <h1 className="text-2xl font-bold text-slate-900">Fase 1: Orçamento</h1>
-                    <p className="text-sm text-slate-500 mt-1">Solicitação, Informações de Engenharia e Avaliação.</p>
-                </div>
+        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '1.5rem' }}>
+            <div style={{ marginBottom: '1.5rem' }}>
+                <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#0f172a' }}>Fase 1: Orçamento</h1>
+                <p style={{ fontSize: '0.875rem', color: '#64748b' }}>Solicitação, Informações de Engenharia e Avaliação.</p>
             </div>
 
-            <div className="space-y-6">
-                {/* Bloco Ação TL Engenharia */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 {mostrarTL && (
-                    <div className="action-block bg-white shadow-sm rounded-2xl border border-slate-200 overflow-hidden">
-                        <div className="border-l-4 border-amber-500 p-6 md:p-8">
-                            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                                <div>
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className="bg-slate-100 text-slate-700 text-xs font-bold px-2 py-0.5 rounded border border-slate-200">REQ-2023-112</span>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-slate-900">Estrutura Metálica Suporte Principal</h3>
-                                    <p className="text-sm text-slate-500 mt-1">SCL: João (Normal)</p>
-                                </div>
-                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
-                                    Ação Requerida (TL Eng)
-                                </span>
-                            </div>
+                    <div className="fase1-action-card" style={{ backgroundColor: 'white', borderRadius: '1rem', padding: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Estrutura Metálica Suporte Principal</h3>
 
-                            <form onSubmit={handleTLSubmit} className="space-y-6 border-t border-slate-100 pt-6 mt-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-sm font-bold text-slate-700 mb-1">Tipo de Orçamento Direcionado</label>
-                                        <select className="w-full sm:text-sm border-slate-300 rounded-lg p-2.5 border bg-slate-50">
-                                            <option value="">Selecione conforme fluxograma...</option>
-                                            <option value="construtivos">Orçar Construtivos (Materiais)</option>
-                                            <option value="servicos">Orçar Serviços de Manufatura</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="flex justify-end gap-3 pt-2">
-                                    <button type="submit" className="py-2.5 px-6 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700">
-                                        Enviar para Manufatura
-                                    </button>
-                                </div>
-                            </form>
+                        {/* Fluxograma */}
+                        <div className="fase1-flow-indicator" style={{ marginTop: '1.5rem' }}>
+                            <div className="fase1-flow-step muted">
+                                <div className="fase1-circle-icon fase1-circle-slate"><Check size={16} /></div>
+                                <span className="fase1-step-text">Solicitar<br />Orçamento</span>
+                            </div>
+                            <div className="fase1-line"></div>
+                            <div className="fase1-flow-step">
+                                <div className="fase1-circle-icon fase1-circle-amber"><FileText size={16} /></div>
+                                <span className="fase1-step-text active">Fornecer Infos Engenharia</span>
+                            </div>
+                            <div className="fase1-line fase1-line-dashed"></div>
+                            <div className="fase1-flow-step muted">
+                                <div className="fase1-circle-icon fase1-circle-slate"></div>
+                                <span className="fase1-step-text">Orçar<br />(Manufatura)</span>
+                            </div>
                         </div>
+
+                        <form onSubmit={handleTLSubmit} style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #f1f5f9' }}>
+                            <div style={{ marginBottom: '1rem' }}>
+                                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Anexar Desenhos / BOM</label>
+                                <div className="fase1-upload-box">
+                                    <UploadCloud size={32} color="#94a3b8" style={{ margin: '0 auto' }} />
+                                    <p style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#2563eb', fontWeight: '500' }}>Fazer upload</p>
+                                </div>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                <button type="submit" style={{ backgroundColor: '#2563eb', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
+                                    Enviar para Manufatura
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 )}
 
-                {/* Bloco Ação SCL/PM/Planner */}
                 {mostrarSCL && (
-                    <div className="action-block bg-white shadow-sm rounded-2xl border border-slate-200 overflow-hidden">
-                        <div className="border-l-4 border-amber-500 p-6 md:p-8">
-                            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                                <div>
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className="bg-slate-100 text-slate-700 text-xs font-bold px-2 py-0.5 rounded border border-slate-200">REQ-2023-095</span>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-slate-900">Usinagem de Precisão Bloco Motor</h3>
-                                </div>
-                            </div>
+                    <div className="fase1-action-card" style={{ backgroundColor: 'white', borderRadius: '1rem', padding: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Usinagem de Precisão Bloco Motor</h3>
 
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 bg-blue-50 p-5 rounded-xl border border-blue-100">
-                                <div>
-                                    <p className="text-xs text-slate-500 uppercase font-bold mb-1">Custo Total</p>
-                                    <p className="text-xl font-black text-blue-700">R$ 16.700,00</p>
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500 uppercase font-bold mb-1">Prazo Manufatura</p>
-                                    <p className="text-lg font-bold text-slate-900">25 dias úteis</p>
-                                </div>
+                        <div className="fase1-flow-indicator" style={{ marginTop: '1.5rem' }}>
+                            <div className="fase1-flow-step muted">
+                                <span className="fase1-step-text" style={{ marginBottom: '0.5rem' }}>Orçar (Manufatura)</span>
+                                <div className="fase1-circle-icon fase1-circle-slate"><Check size={16} /></div>
                             </div>
+                            <div className="fase1-line"></div>
+                            <div className="fase1-flow-step">
+                                <span className="fase1-step-text active" style={{ top: '-1.5rem' }}>Avaliar Orçamento</span>
+                                <div className="fase1-diamond-icon"><i>?</i></div>
+                            </div>
+                            <div className="fase1-line fase1-line-dashed"></div>
+                            <div className="fase1-flow-step muted">
+                                <span className="fase1-step-text">Aprovar / Reprovar</span>
+                            </div>
+                        </div>
 
-                            <div className="border-t border-slate-200 pt-6">
-                                <p className="text-sm font-bold text-slate-700 mb-4">Qual a sua decisão como PM/Planner/SCL?</p>
-                                <div className="flex flex-wrap gap-4">
-                                    <button onClick={() => { alert('Aprovado!'); setMostrarSCL(false); }} className="flex-1 px-4 py-3 text-sm font-bold rounded-lg text-white bg-emerald-600 hover:bg-emerald-700">
-                                        APROVAR
-                                    </button>
-                                    <button onClick={() => { alert('Reprovado!'); setMostrarSCL(false); }} className="flex-1 px-4 py-3 text-sm font-bold rounded-lg text-rose-700 bg-rose-100 hover:bg-rose-200">
-                                        REPROVAR
-                                    </button>
-                                </div>
-                            </div>
+                        <div className="fase1-budget-grid">
+                            <div><div className="fase1-budget-label">Construtivos</div><div className="fase1-budget-value">R$ 12.500,00</div></div>
+                            <div><div className="fase1-budget-label">Serviços</div><div className="fase1-budget-value">R$ 4.200,00</div></div>
+                            <div><div className="fase1-budget-label">Custo Total</div><div className="fase1-budget-total">R$ 16.700,00</div></div>
+                            <div><div className="fase1-budget-label">Prazo Manufatura</div><div className="fase1-budget-value">25 dias úteis</div></div>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '1rem' }}>
+                            <button onClick={() => { alert('Aprovado!'); setMostrarSCL(false); }} style={{ flex: 1, backgroundColor: '#059669', color: 'white', padding: '0.75rem', borderRadius: '0.5rem', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>APROVAR</button>
+                            <button onClick={() => { alert('Reprovado!'); setMostrarSCL(false); }} style={{ flex: 1, backgroundColor: '#ffe4e6', color: '#e11d48', padding: '0.75rem', borderRadius: '0.5rem', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>REPROVAR</button>
                         </div>
                     </div>
                 )}
