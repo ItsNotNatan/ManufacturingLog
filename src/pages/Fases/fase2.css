@@ -1,20 +1,122 @@
-/* src/pages/Fases/Fase2.css */
-.fase2-action-card {
+/* ==========================================
+   FILE: src/pages/Fases/Fase2.css
+   ========================================== */
+
+/* Layout Base */
+.fase2-container {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.fase2-header {
+    margin-bottom: 1.5rem;
+}
+
+.fase2-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0f172a;
+    margin: 0;
+}
+
+.fase2-subtitle {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-top: 0.25rem;
+}
+
+/* Cartões de Ação */
+.fase2-action-block {
+    background-color: #fff;
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.fase2-card-body {
+    padding: 1.5rem 2rem;
     border-left: 4px solid #f59e0b;
 }
 
-.fase2-delivery-card {
-    border-left: 4px solid #10b981;
+/* Cabeçalho dos Cartões */
+.fase2-flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
 }
 
-.fase2-context-box {
+.fase2-badge-blue {
+    background-color: #dbeafe;
+    color: #1e40af;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #bfdbfe;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.fase2-badge-amber {
+    background-color: #fef3c7;
+    color: #92400e;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid #fde68a;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.fase2-item-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #0f172a;
+    margin: 0;
+}
+
+/* Caixa de Informação (Info Box) */
+.fase2-info-box {
     background-color: #f8fafc;
     border: 1px solid #f1f5f9;
     border-radius: 0.75rem;
     padding: 1rem;
     margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
+.fase2-info-icon {
+    color: #3b82f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fase2-info-title {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #334155;
+    margin: 0 0 0.25rem 0;
+}
+
+.fase2-info-desc {
+    font-size: 0.75rem;
+    color: #475569;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Tabela de Recursos */
 .fase2-table-wrapper {
     border: 1px solid #e2e8f0;
     border-radius: 0.75rem;
@@ -37,49 +139,141 @@
     text-transform: uppercase;
 }
 
+.fase2-table th.highlight {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+}
+
 .fase2-table td {
     background-color: #fff;
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
     border-top: 1px solid #e2e8f0;
-}
-
-.fase2-table th.highlight {
-    background-color: #eff6ff;
-    color: #1d4ed8;
+    color: #0f172a;
+    font-weight: 500;
+    vertical-align: middle;
 }
 
 .fase2-table td.highlight-cell {
     background-color: rgba(239, 246, 255, 0.3);
 }
 
-.fase2-info-box {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.fase2-table-icon {
+    color: #94a3b8;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Inputs e Botões da Tabela */
+.fase2-input {
+    width: 100%;
+    font-size: 0.875rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.375rem;
+    padding: 0.375rem;
+    outline: none;
     background-color: #fff;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    font-family: inherit;
 }
 
-@media (max-width: 640px) {
-    .fase2-info-box {
-        flex-direction: column;
-        text-align: center;
-    }
+.fase2-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
 }
 
-.fase2-info-icon {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: #f1f5f9;
-    color: #64748b;
+.fase2-btn-icon-danger {
+    background: none;
+    border: none;
+    color: #f43f5e;
+    cursor: pointer;
+    padding: 0.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
-    flex-shrink: 0;
+    margin: 0 auto;
+    transition: color 0.2s;
+}
+
+.fase2-btn-icon-danger:hover {
+    color: #be123c;
+}
+
+.fase2-btn-icon-primary {
+    background: none;
+    border: none;
+    color: #3b82f6;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: color 0.2s;
+}
+
+.fase2-btn-icon-primary:hover {
+    color: #1d4ed8;
+}
+
+/* Botões de Ação */
+.fase2-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.fase2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.fase2-btn-primary {
+    background-color: #2563eb;
+    color: #fff;
+}
+
+.fase2-btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.fase2-btn-outline {
+    background-color: #fff;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+}
+
+.fase2-btn-outline:hover {
+    background-color: #f8fafc;
+}
+
+.fase2-btn-outline svg {
+    color: #059669;
+}
+
+/* Animação */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
