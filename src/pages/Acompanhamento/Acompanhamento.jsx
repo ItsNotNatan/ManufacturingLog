@@ -21,11 +21,16 @@ export default function Acompanhamento() {
         try {
             setCarregando(true);
             setErro(null);
-            // Faz o pedido à rota GET que acabámos de criar no Back-end
+
             const resposta = await api.get('/dispositivos');
 
-            // Guarda os dados reais no estado do React
-            setSolicitacoes(resposta.data.dados);
+            // 1. EXTRAÇÃO SEGURA: Verifica onde a lista está escondida dentro da resposta
+            // Se resposta.data.dados não existir, tenta resposta.data. Se falhar, usa []
+            const dadosExtraidos = resposta.data?.dados || resposta.data || [];
+
+            // 2. VALIDAÇÃO: Garante que só guardamos a informação se for efetivamente uma lista
+            setSolicitacoes(Array.isArray(dadosExtraidos) ? dadosExtraidos : []);
+
         } catch (err) {
             console.error("Erro ao procurar logs:", err);
             setErro("Não foi possível carregar os dados. Verifique a conexão.");
@@ -49,8 +54,14 @@ export default function Acompanhamento() {
         return status.charAt(0).toUpperCase() + status.slice(1);
     };
 
-    // Filtra pelos dados reais (ex: projeto, pm ou linha)
-    const solicitacoesFiltradas = solicitacoes.filter(item => {
+    // ==========================================
+    // CAMADA DE PROTEÇÃO ADICIONADA AQUI 👇
+    // ==========================================
+    // Garante que listaSegura é sempre um Array (lista), mesmo que solicitacoes seja undefined
+    const listaSegura = Array.isArray(solicitacoes) ? solicitacoes : [];
+
+    // Filtra pelos dados reais usando a listaSegura em vez da variável original
+    const solicitacoesFiltradas = listaSegura.filter(item => {
         const termo = pesquisa.toLowerCase();
         return (
             (item.projeto && item.projeto.toLowerCase().includes(termo)) ||
@@ -109,7 +120,7 @@ export default function Acompanhamento() {
                                 </td>
                             </tr>
                         ) : solicitacoesFiltradas.length > 0 ? (
-                            /* 3. Mostra os dados reais */
+                            /* 3. Mostra os dados reais usando as solicitações filtradas com segurança */
                             solicitacoesFiltradas.map((item) => (
                                 <tr key={item.id}>
                                     <td style={{ fontWeight: '600' }}>{item.projeto}</td>
