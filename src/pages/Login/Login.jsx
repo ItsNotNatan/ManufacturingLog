@@ -21,32 +21,17 @@ export default function Login() {
         setErro('');
 
         try {
-            // Consulta a lista de utilizadores no Back-end
-            const resposta = await api.get('/usuarios');
-            const lista = resposta.data.dados || [];
+            // Chamada real ao endpoint POST /api/auth/login do Back-end
+            const resposta = await api.post('/auth/login', { email, senha });
 
-            // Procura o utilizador correspondente pelo e-mail
-            const usuarioEncontrado = lista.find(
-                u => u.email.toLowerCase() === email.trim().toLowerCase()
-            );
-
-            if (usuarioEncontrado) {
-                setUsuario({
-                    id: usuarioEncontrado.id,
-                    nome: usuarioEncontrado.nome,
-                    email: usuarioEncontrado.email,
-                    nivel_acesso: usuarioEncontrado.nivel_acesso,
-                    area_id: usuarioEncontrado.area_id,
-                    nome_area: usuarioEncontrado.areas?.nome || 'Área Padrão'
-                });
-
+            if (resposta.data.sucesso) {
+                // Guarda os dados validados pelo servidor no Zustand
+                setUsuario(resposta.data.dados);
                 navigate('/aprovacoes');
-            } else {
-                setErro('E-mail não encontrado. Teste com: admin.orcamento@nexus.com');
             }
         } catch (error) {
             console.error(error);
-            setErro('Erro ao conectar ao servidor. Certifique-se de que o Back-end está a correr na porta 3000.');
+            setErro(error.response?.data?.erro || 'Erro ao conectar ao servidor. Verifique se o Back-end está a correr na porta 3000.');
         } finally {
             setCarregando(false);
         }
@@ -60,7 +45,7 @@ export default function Login() {
                         <Factory size={40} />
                     </div>
                     <h2>NexusFactory</h2>
-                    <p>Aceda ao painel da fábrica com o seu e-mail corporativo</p>
+                    <p>Aceda ao painel da fábrica com o seu e-mail e palavra-passe</p>
                 </div>
 
                 {erro && <div className="login-error">{erro}</div>}
