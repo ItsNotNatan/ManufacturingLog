@@ -1,10 +1,9 @@
-// ==========================================
 // FILE: src/pages/Login/Login.jsx
-// ==========================================
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Factory, Mail, Lock } from 'lucide-react';
 import { useAuthStore } from '../../contexts/authStore';
+import api from '../../services/api';
 import './Login.css';
 
 export default function Login() {
@@ -14,7 +13,7 @@ export default function Login() {
     const [erro, setErro] = useState('');
 
     const navigate = useNavigate();
-    const { setUsuario } = useAuthStore(); // Função para salvar o utilizador logado no Zustand
+    const { setUsuario } = useAuthStore();
 
     const lidarComLogin = async (e) => {
         e.preventDefault();
@@ -22,27 +21,32 @@ export default function Login() {
         setErro('');
 
         try {
-            // SIMULAÇÃO: Como o Back-end ainda não tem a rota /login, simulamos uma espera de 1 segundo.
-            // Futuramente será: const resposta = await api.post('/login', { email, senha });
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // Consulta a lista de utilizadores no Back-end
+            const resposta = await api.get('/usuarios');
+            const lista = resposta.data.dados || [];
 
-            // Simulação de regras básicas
-            if (email === 'admin@nexus.com' || email.includes('@nexus.com')) {
-                // 1. Atualizamos o estado global (Zustand) com o utilizador
+            // Procura o utilizador correspondente pelo e-mail
+            const usuarioEncontrado = lista.find(
+                u => u.email.toLowerCase() === email.trim().toLowerCase()
+            );
+
+            if (usuarioEncontrado) {
                 setUsuario({
-                    id: 'USR-AUTH',
-                    nome: email.split('@')[0], // Pega o primeiro nome do email
-                    email: email,
-                    cargo: email === 'admin@nexus.com' ? 'admin_area' : 'normal'
+                    id: usuarioEncontrado.id,
+                    nome: usuarioEncontrado.nome,
+                    email: usuarioEncontrado.email,
+                    nivel_acesso: usuarioEncontrado.nivel_acesso,
+                    area_id: usuarioEncontrado.area_id,
+                    nome_area: usuarioEncontrado.areas?.nome || 'Área Padrão'
                 });
 
-                // 2. Redirecionamos para a área restrita
                 navigate('/aprovacoes');
             } else {
-                setErro('Credenciais inválidas. Utilize um e-mail @nexus.com.');
+                setErro('E-mail não encontrado. Teste com: admin.orcamento@nexus.com');
             }
         } catch (error) {
-            setErro('Ocorreu um erro ao conectar ao servidor.');
+            console.error(error);
+            setErro('Erro ao conectar ao servidor. Certifique-se de que o Back-end está a correr na porta 3000.');
         } finally {
             setCarregando(false);
         }
@@ -56,7 +60,7 @@ export default function Login() {
                         <Factory size={40} />
                     </div>
                     <h2>NexusFactory</h2>
-                    <p>Faça login para aceder ao painel de logística</p>
+                    <p>Aceda ao painel da fábrica com o seu e-mail corporativo</p>
                 </div>
 
                 {erro && <div className="login-error">{erro}</div>}
@@ -68,7 +72,7 @@ export default function Login() {
                             <Mail size={18} className="input-icon" />
                             <input
                                 type="email"
-                                placeholder="exemplo@nexus.com"
+                                placeholder="admin.orcamento@nexus.com"
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
