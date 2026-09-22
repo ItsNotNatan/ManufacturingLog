@@ -6,9 +6,9 @@ import Acompanhamento from '../pages/Acompanhamento/Acompanhamento';
 import Aprovacoes from '../pages/Aprovacoes/Aprovacoes';
 
 // Importa as nossas novas páginas!
-import Fase1 from '../pages/Fases/Fase1';
-import Fase2 from '../pages/Fases/Fase2';
-import Fase3 from '../pages/Fases/Fase3';
+import Fase1 from '../pages/Fases/Fase1/Fase1';
+import Fase2 from '../pages/Fases/Fase2/Fase2';
+import Fase3 from '../pages/Fases/Fase3/Fase3';
 
 export const rotas = createBrowserRouter([
     {

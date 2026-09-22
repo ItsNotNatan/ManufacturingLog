@@ -1,4 +1,5 @@
-/* src/pages/Acompanhamento/Acompanhamento.css */
+/* FILE: src/pages/Acompanhamento/Acompanhamento.css */
+
 .acompanhamento-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -19,6 +20,7 @@
     color: #1f2937;
 }
 
+/* Barra de Pesquisa e Filtros */
 .acompanhamento-actions {
     display: flex;
     gap: 1rem;
@@ -53,6 +55,7 @@
     color: #6b7280;
 }
 
+/* Tabela de Acompanhamento */
 .table-container {
     background: white;
     border-radius: 0.5rem;
@@ -88,22 +91,30 @@
     border-bottom: none;
 }
 
-/* LINHAS INTERATIVAS */
+/* ==========================================
+   NOVAS REGRAS: LINHAS INTERATIVAS E BADGES
+   ========================================== */
+
+/* 1. Estilo para a linha interativa da tabela */
 .linha-clicavel {
     cursor: pointer;
+    /* Muda o cursor para a mãozinha */
     transition: background-color 0.2s ease;
     user-select: none;
+    /* Evita que o texto seja selecionado no duplo clique */
 }
 
+/* Efeito ao passar o rato por cima */
 .linha-clicavel:hover {
     background-color: #f8fafc;
 }
 
+/* Feedback visual ao clicar */
 .linha-clicavel:active {
     background-color: #f1f5f9;
 }
 
-/* BADGES DE STATUS */
+/* Badges de Status Geral */
 .status-badge {
     padding: 0.3rem 0.8rem;
     border-radius: 2rem;
@@ -131,7 +142,7 @@
     border: 1px solid #bbf7d0;
 }
 
-/* BADGE DA FASE ATUAL */
+/* 2. Badge da Fase Atual (Substitui o ícone do olho) */
 .badge-fase {
     display: inline-flex;
     align-items: center;
